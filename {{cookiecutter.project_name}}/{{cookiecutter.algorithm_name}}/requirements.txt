@@ -1,0 +1,15 @@
+pandas>=0.24.2
+{% if cookiecutter.ml_engine == "tensorflow(with keras)" %}
+tensorflow>=1.13.1
+keras>=2.2.4
+
+{% elif cookiecutter.ml_engine == "pytorch" %}
+pytorch>=1.0.2
+
+{% elif cookiecutter.ml_engine == "scikit-learn" %}
+scikit-learn>=0.21.2
+
+{% elif cookiecutter.ml_engine == "xgboost" %}
+xgboost>=0.90
+
+{% endif %}

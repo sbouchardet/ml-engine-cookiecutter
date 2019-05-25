@@ -1,0 +1,2 @@
+gcloud-utils>=2.17.9
+nose>=1.3.7
