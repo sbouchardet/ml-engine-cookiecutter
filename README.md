@@ -1,9 +1,9 @@
 # ml-engine-cookiecutter
 
-This cookiecutter will help you to build a algorithm to run on [Google ML Engine](https://cloud.google.com/ml-engine). 
+This cookiecutter will help you to build an algorithm to run on [Google ML Engine](https://cloud.google.com/ml-engine). 
 
 ## Setup
-Install cookiecutter
+Install the cookiecutter
 
 ```bash
 pip install cookiecutter
@@ -22,8 +22,8 @@ cookiecutter https://github.com/sbouchardet/ml-engine-cookiecutter.git
 - `project_author_name`: author's name
 - `project_author_email`: author's email
 - `algorithm_name`: name of the algorithm that you will deploy to Google's ML Engine
-- `ml_engine`: Choosen engine to implementes the algorithm. Today Google's ML Engine suport only [Ternsorflow](https://www.tensorflow.org/), [Keras](https://keras.io/), [PyTorch](https://pytorch.org/), [Scikit Learn](https://scikit-learn.org/stable/) and [XGboost](https://xgboost.readthedocs.io/en/latest/).
-- `gs_region`: The region where the job will run on Google's ML Engine. The suported regions can be found on the [link](https://cloud.google.com/ml-engine/docs/tensorflow/regions) 
+- `ml_engine`: Choosen engine to implement the algorithm. Today Google's ML Engine suport only [Ternsorflow](https://www.tensorflow.org/), [Keras](https://keras.io/), [PyTorch](https://pytorch.org/), [Scikit Learn](https://scikit-learn.org/stable/) and [XGboost](https://xgboost.readthedocs.io/en/latest/).
+- `gs_region`: The region where the job will run on Google's ML Engine. The suported regions can be found in the [link](https://cloud.google.com/ml-engine/docs/tensorflow/regions) 
 - `gs_bucket`: The bucket from Google Storage where the input and output data for the job is.
 - `google_credential_filename`: name of the file of google application credential inside the project. 
 
