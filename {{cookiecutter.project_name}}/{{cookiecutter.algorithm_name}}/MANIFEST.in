@@ -1,0 +1,4 @@
+include version
+include setup.py
+include setup.cfg
+include requirements.txt

@@ -6,5 +6,6 @@
     "algorithm_name": "my_nice_algo",
     "ml_engine": ["tensorflow(with keras)", "pytorch", "xgboost", "scikit-learn"],
     "gs_region": "us-central1",
-    "gs_bucket": "ml-engine-bucket"
+    "gs_bucket": "ml-engine-bucket",
+    "google_credential_filename": "google_credentials.json"
 }
