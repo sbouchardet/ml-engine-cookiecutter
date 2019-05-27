@@ -4,7 +4,7 @@ G_CREDENTIALS=$(PWD)/{{cookiecutter.google_credential_filename}}
 
 check-preffix-var:
 ifndef DEPLOY_PREFFIX
-	$(error you must pass a TEST_ID)
+	$(error you must pass a DEPLOY_PREFFIX)
 endif
 
 setup-dev: setup
