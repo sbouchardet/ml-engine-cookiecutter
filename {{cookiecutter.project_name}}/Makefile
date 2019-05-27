@@ -1,6 +1,6 @@
 .PHONY: setup test deploy-google
 PWD=$(shell pwd)
-G_CREDENTIALS=$(PWD)/{{cookiecutter.google_credential_filename}}
+G_CREDENTIALS=$(PWD)/{{cookiecutter.google_credential_filename}}.json
 
 check-preffix-var:
 ifndef DEPLOY_PREFFIX

@@ -11,7 +11,7 @@ alg = "{{cookiecutter.algorithm_name}}"
 
 deploy_prefix = None if len(sys.argv)==1 else sys.argv[1]
 
-with open("{{cookiecutter.algorithm_name}}/version".format(alg)) as v:
+with open("{{cookiecutter.algorithm_name}}/version") as v:
     version = v.read()
 
 version_folder = version if deploy_prefix is None else "{}_{}".format(deploy_prefix, version)

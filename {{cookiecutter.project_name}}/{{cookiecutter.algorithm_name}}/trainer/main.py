@@ -1,5 +1,5 @@
 import argparse
-from {{cookiecutter.algorithm_name}}_trainer import Trainer
+from trainer.{{cookiecutter.algorithm_name}}_trainer import Trainer
 
 if __name__ == '__main__':
 
