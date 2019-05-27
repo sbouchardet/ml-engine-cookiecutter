@@ -2,6 +2,11 @@
 PWD=$(shell pwd)
 G_CREDENTIALS=$(PWD)/{{cookiecutter.google_credential_filename}}
 
+check-preffix-var:
+ifndef DEPLOY_PREFFIX
+	$(error you must pass a TEST_ID)
+endif
+
 setup-dev: setup
 	@pip install -r requirements-dev.txt
 
@@ -19,6 +24,20 @@ build:
 
 deploy-google: build
 	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/deploy_google.py $(DEPLOY_PREFFIX)
+
+run-google:
+	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/submit_google.py $(DEPLOY_PREFFIX)
+
+submit-google-local: check-preffix-var
+	@echo "BUILDING..."
+	@$(MAKE) build
+	@echo "BUILD DONE!"
+	@echo "UPLOADING..."
+	@$(MAKE) deploy-google
+	@echo "UPLOAD DONE!"
+	@echo "RUNNING..."
+	@$(MAKE) run-google
+	@echo "DONE!"
 
 
 

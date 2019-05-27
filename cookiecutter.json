@@ -7,5 +7,6 @@
     "ml_engine": ["tensorflow(with keras)", "pytorch", "xgboost", "scikit-learn"],
     "gs_region": "us-central1",
     "gs_bucket": "ml-engine-bucket",
+    "gs_project": "test_project",
     "google_credential_filename": "google_credentials.json"
 }
