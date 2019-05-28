@@ -25,5 +25,6 @@ cookiecutter https://github.com/sbouchardet/ml-engine-cookiecutter.git
 - `ml_engine`: Choosen engine to implement the algorithm. Today Google's ML Engine suport only [Ternsorflow](https://www.tensorflow.org/), [Keras](https://keras.io/), [PyTorch](https://pytorch.org/), [Scikit Learn](https://scikit-learn.org/stable/) and [XGboost](https://xgboost.readthedocs.io/en/latest/).
 - `gs_region`: The region where the job will run on Google's ML Engine. The suported regions can be found in the [link](https://cloud.google.com/ml-engine/docs/tensorflow/regions) 
 - `gs_bucket`: The bucket from Google Storage where the input and output data for the job is.
+- `gs_project`: Google Cloud Project's name.
 - `google_credential_filename`: name of the file of google application credential inside the project. 
 
