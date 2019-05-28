@@ -4,7 +4,7 @@
     "project_author_name":"john doe",
     "project_author_email":"john.doe@provider.com",
     "algorithm_name": "my_nice_algo",
-    "ml_engine": ["tensorflow(with keras)", "pytorch", "xgboost", "scikit-learn"],
+    "ml_engine": ["tensorflow", "tensorflow(with keras)", "pytorch", "xgboost", "scikit-learn"],
     "gs_region": "us-central1",
     "gs_bucket": "ml-engine-bucket",
     "gs_project": "test_project",

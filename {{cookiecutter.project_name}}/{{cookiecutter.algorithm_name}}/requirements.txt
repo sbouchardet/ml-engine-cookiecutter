@@ -1,7 +1,10 @@
 pandas>=0.24.2
 numpy>=1.16.3
 
-{% if cookiecutter.ml_engine == "tensorflow(with keras)" %}
+{% if cookiecutter.ml_engine == "tensorflow" %}
+tensorflow>=1.13.1
+
+{% elif cookiecutter.ml_engine == "tensorflow(with keras)" %}
 tensorflow>=1.13.1
 keras>=2.2.4
 

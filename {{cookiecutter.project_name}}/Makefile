@@ -1,6 +1,8 @@
 .PHONY: setup test deploy-google
 PWD=$(shell pwd)
 G_CREDENTIALS=$(PWD)/{{cookiecutter.google_credential_filename}}.json
+VERSION=$(shell cat $(PWD)/{{cookiecutter.algorithm_name}}/version)
+
 
 check-preffix-var:
 ifndef DEPLOY_PREFFIX
@@ -22,7 +24,11 @@ run-local:
 build:
 	@cd {{cookiecutter.algorithm_name}} && python setup.py sdist
 
-deploy-google: build
+deploy-go$(MAKE) increase-versionogle:
+	@echo "Version: $(VERSION)"
+	@read -p "Enter New Version:" number; \
+	echo "$$number" > $(PWD)/{{cookiecutter.algorithm_name}}/version;
+	@$(MAKE) build
 	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/deploy_google.py $(DEPLOY_PREFFIX)
 
 run-google:
@@ -38,6 +44,8 @@ submit-google-local: check-preffix-var
 	@echo "RUNNING..."
 	@$(MAKE) run-google
 	@echo "DONE!"
+
+
 
 
 
