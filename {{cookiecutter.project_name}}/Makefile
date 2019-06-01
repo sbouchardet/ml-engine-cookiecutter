@@ -25,7 +25,14 @@ build: clean
 deploy:
 	@echo "Version: $(VERSION)"
 	@read -p "Enter New Version:" number; \
-	echo "$$number" > $(PWD)/{{cookiecutter.algorithm_name}}/version;
+	echo "$$number" > $(PWD)/{{cookiecutter.algorithm_name}}/version; \
+	git add $(PWD)/{{cookiecutter.algorithm_name}}/version; \
+	git commit -m "Bump $$number"; \
+	git tag $$number ; \
+	git push origin $$number
+	@$(MAKE) deploy-google
+
+deploy-google:
 	@$(MAKE) build
 	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/deploy_google.py $(DEPLOY_PREFFIX)
 
