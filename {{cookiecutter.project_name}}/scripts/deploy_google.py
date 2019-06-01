@@ -1,19 +1,8 @@
 from gcloud import storage
-import os
 import sys
+import config_google as c
 
 deploy_prefix = None if len(sys.argv)==1 else sys.argv[1]
-
-bucket="{{cookiecutter.gs_bucket}}"
-
-with open("{{cookiecutter.algorithm_name}}/version") as v:
-    version = v.read()
-
-version_folder = version if deploy_prefix is None else "{}_{}".format(deploy_prefix, version)
-
-artefact_name = "{{cookiecutter.algorithm_name}}-{}.tar.gz".format(version)
-local_artefact = os.path.join("{{cookiecutter.algorithm_name}}","dist",artefact_name)
-destination_blob=os.path.join("artefacts","algorithms",version_folder,artefact_name)
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
     """Uploads a file to the bucket."""
@@ -27,5 +16,8 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
         source_file_name,
         destination_blob_name))
 
-upload_blob(bucket, local_artefact, destination_blob)
+upload_blob(
+    c.gs_bucket,
+    c.local_artefact,
+    c.storage_artefact(deploy_prefix))
 

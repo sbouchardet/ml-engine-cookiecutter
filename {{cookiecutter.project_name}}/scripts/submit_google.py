@@ -1,28 +1,20 @@
 from gcloud_utils.ml_engine import MlEngine
-from gcloud_utils.storage import Storage
 import sys
-import os
-
-BUCKET = "{{cookiecutter.gs_bucket}}"
-PROJECT = "{{cookiecutter.gs_project}}"
-REGION = "{{cookiecutter.gs_region}}"
-
-alg = "{{cookiecutter.algorithm_name}}"
+import config_google as c
 
 deploy_prefix = None if len(sys.argv)==1 else sys.argv[1]
 
-with open("{{cookiecutter.algorithm_name}}/version") as v:
-    version = v.read()
+package_path = c.storage_artefact(deploy_prefix)
 
-version_folder = version if deploy_prefix is None else "{}_{}".format(deploy_prefix, version)
-package_path=os.path.join("artefacts","algorithms",version_folder)
-artefact_name = "{{cookiecutter.algorithm_name}}-{}.tar.gz".format(version)
-
-ml = MlEngine(PROJECT,BUCKET,REGION, package_path=package_path)
+ml = MlEngine(
+    c.gs_project,
+    c.gs_bucket,
+    c.gs_region,
+    package_path=package_path)
 
 job = ml.start_training_job(
     "teste",
-    artefact_name,
+    c.artefact_name,
     "trainer.main",
      python_version="3.5",
      runtime_version="1.13"
