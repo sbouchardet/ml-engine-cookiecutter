@@ -40,9 +40,6 @@ run-google:
 	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/submit_google.py $(DEPLOY_PREFIX)
 
 submit-google-local: check-prefix-var
-	@echo "BUILDING..."
-	@$(MAKE) build
-	@echo "BUILD DONE!"
 	@echo "UPLOADING..."
 	@$(MAKE) deploy-google
 	@echo "UPLOAD DONE!"
