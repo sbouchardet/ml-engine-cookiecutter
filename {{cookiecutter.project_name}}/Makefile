@@ -3,9 +3,9 @@ PWD=$(shell pwd)
 G_CREDENTIALS=$(PWD)/{{cookiecutter.google_credential_filename}}.json
 VERSION=$(shell cat $(PWD)/{{cookiecutter.algorithm_name}}/version)
 
-check-preffix-var:
-ifndef DEPLOY_PREFFIX
-	$(error you must pass a DEPLOY_PREFFIX)
+check-prefix-var:
+ifndef DEPLOY_PREFIX
+	$(error you must pass a DEPLOY_PREFIX)
 endif
 
 setup:
@@ -34,12 +34,12 @@ deploy:
 
 deploy-google:
 	@$(MAKE) build
-	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/deploy_google.py $(DEPLOY_PREFFIX)
+	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/deploy_google.py $(DEPLOY_PREFIX)
 
 run-google:
-	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/submit_google.py $(DEPLOY_PREFFIX)
+	@GOOGLE_APPLICATION_CREDENTIALS=$(G_CREDENTIALS) python scripts/submit_google.py $(DEPLOY_PREFIX)
 
-submit-google-local: check-preffix-var
+submit-google-local: check-prefix-var
 	@echo "BUILDING..."
 	@$(MAKE) build
 	@echo "BUILD DONE!"
